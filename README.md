@@ -24,11 +24,18 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What problem does the context API help solve?
+   - It helps to solve problems as prop drilling which is passing down props from component to component. But by applying Context API we can just pass it down to any component that needs the data without having to explicitly write props everytime.
 2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
-3. What is the difference between Application state and Component state? When would be a good time to use one over the other?
+  -Actions are just functions that return an object with a type property as required and sometimes payload which contains the input data that the user passes. Then the reducer receives that action along the data that it's dispatched from the component and according to it's type it returns a new state object, hence, changing the previous state, which in turn, we can use later in our components. Store is where our application state data get's stored, in javascript object form. It is known as the single source of truth because it is the only place where our state data lives.
+3. What is the difference between Application state and Component state? 
+When would be a good time to use one over the other?
+-Application state is when the state data is passed to the whole application and thus any component can use that data. But component state is when only a specific component can use the specified states only in that component.
+-When multiple components want to use many of the same states it is good approach to use an application state to not to make it very cumbersome. And component state would be a good approach when only a single component requires it.
 4. Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
-5. What is your favorite state management system you've learned and this sprint? Please explain why!
+-Redux-thunk is a middleware that allows us to perform asynchronous operations before the actions are passed to the reducers. Now instead of returning a single object, our action creator returns another function which has the dispatched actions according to its API call request.
 
+5. What is your favorite state management system you've learned and this sprint? Please explain why!
+ Context API is my favorite because it simplifies the state management a lot. But in terms of usability and effectiveness using Redux would be definitely a way to go.
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 
 ## Instructions
