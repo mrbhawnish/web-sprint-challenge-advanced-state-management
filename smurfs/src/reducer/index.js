@@ -5,7 +5,7 @@ import {POST_SMURF_START } from "../action";
 import {POST_SMURF_SUCCESS} from "../action";
 const initialState = [
   {
-    name: " ",
+    name: [],
     age: "",
     height: " ",
     id: Date.now(),
@@ -18,10 +18,21 @@ export const reducer = (state = initialState, action) => {
     case FETCH_SMURF_START:
       return state;
     case FETCH_SMURF_SUCCESS:
+      const newName = []
+      action.payload.map((item,i) => { 
+       newName.push(item.name)
+       return newName
+        
+      })
+       console.log("this is newname in reducer,", newName)
       return {...state,
-       name: action.payload.name,
-       age: action.payload.age,
-       height: action.payload.height
+      name: newName,
+      age: action.payload.map((item,i) => {
+        return item.age
+      }),
+      height: action.payload.map((item,i) => {
+        return item.height
+      })
     }
       case FETCH_SMURF_FAIL:
       return {...state,
@@ -29,12 +40,12 @@ export const reducer = (state = initialState, action) => {
     }
     case  POST_SMURF_START:
       return{ state };
-      // case  POST_SMURF_SUCCESS:
-      // return{...state,
-      // name: action.payload.name,
-      // age: action.payload.name,
-      // height: action.payload.name };
-
+      case POST_SMURF_SUCCESS:
+      return {...state, 
+      name: action.payload.name,
+      age: action.payload.age,
+      height: action.payload.height
+      }
       default:
           return state;
 

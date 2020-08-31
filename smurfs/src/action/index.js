@@ -1,5 +1,4 @@
 import axios from "axios";
-import initialState from "../reducer/index"
 
 export const FETCH_SMURF_START = "FETCH_SMURF_START";
 export const FETCH_SMURF_SUCCESS = "FETCH_SMURF_SUCESS";
@@ -12,12 +11,12 @@ export const getSmurfs = () => (dispatch) => {
      dispatch({type: FETCH_SMURF_START})
     return axios.get("http://localhost:3333/smurfs")
     .then((res) => {
-        res.data.map((item) => {
-       return dispatch({type: FETCH_SMURF_SUCCESS, payload: item})
+      console.log("data", res.data)
+  
+     dispatch({type: FETCH_SMURF_SUCCESS, payload: res.data})
 
-        
-        // dispatch({type: FETCH_SMURF_SUCCESS, payload: res.data})
-    })})
+
+    })
     .catch((err) => {
         console.log("err", err.name)
       dispatch({type: FETCH_SMURF_FAIL, payload: err.message})
@@ -25,12 +24,12 @@ export const getSmurfs = () => (dispatch) => {
     })
 }
 
-export const addSmurf = (initialState) => (dispatch) => {
+export const addSmurf = (statee) => (dispatch) => {
   dispatch({type: POST_SMURF_START})
-  return axios.post("http://localhost:3333/smurfs", initialState)
+  return axios.post("http://localhost:3333/smurfs", statee)
   .then((res) => {
-    
-    dispatch({type: POST_SMURF_SUCCESS, payload:initialState})
+    // console.log("post from add", res.data)
+    dispatch({type: POST_SMURF_SUCCESS, payload: res.data})
 })
 .catch((err) => {
     console.log("err", err.name)

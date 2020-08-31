@@ -16,10 +16,14 @@ class App extends Component {
         <div>Welcome to your state management version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-
-        <h1>Name: {this.props.name}</h1>
-        <h1>age: {this.props.age}</h1>
-        <h1>height: {this.props.height}</h1>
+        <h1>Smurfs Village</h1>
+          {/* {console.log("this isname", this.props.name)} */}
+          {/* {this.props.name.map((item, i) => {
+           return <h1>Name: {item}</h1>
+         })}   */}
+        <h3>Name: {this.props.name}</h3>
+        <h3>age: {this.props.age}</h3>
+        <h3>height: {this.props.height}</h3>
         <SmurfForm></SmurfForm>
         <button onClick={() => this.props.getSmurfs()}>Get smurf</button>
       </div>
