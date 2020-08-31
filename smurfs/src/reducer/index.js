@@ -1,7 +1,8 @@
 import { FETCH_SMURF_START } from "../action";
 import { FETCH_SMURF_SUCCESS } from "../action";
 import { FETCH_SMURF_FAIL } from "../action";
-
+import {POST_SMURF_START } from "../action";
+import {POST_SMURF_SUCCESS} from "../action";
 const initialState = [
   {
     name: " ",
@@ -26,6 +27,13 @@ export const reducer = (state = initialState, action) => {
       return {...state,
        errors: action.payload
     }
+    case  POST_SMURF_START:
+      return{ state };
+      // case  POST_SMURF_SUCCESS:
+      // return{...state,
+      // name: action.payload.name,
+      // age: action.payload.name,
+      // height: action.payload.name };
 
       default:
           return state;
@@ -33,3 +41,5 @@ export const reducer = (state = initialState, action) => {
 
   }
 };
+
+export default initialState;
