@@ -28,11 +28,12 @@ const Wrapper = styled.div`
    min-height: 100%;
    display: flex;
    flex-direction: column;
-   
+
    background: linear-gradient(#00FAB4, #00B0EC);
    .App{
      
    }
 
+   
 `;
 export default App;
